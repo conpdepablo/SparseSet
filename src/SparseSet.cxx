@@ -32,8 +32,7 @@ struct [[nodiscard]] SparseSet
 
   // Insert
   template <typename U>
-  void Insert(std::size_t const id, U&& value)
-  // pre(!Contains(id))
+  void Insert(std::size_t const id, U&& value) pre(!Contains(id))
   {
     if (id >= sparse_.size())
     {
@@ -48,8 +47,7 @@ struct [[nodiscard]] SparseSet
   }
 
   // Remove
-  void Remove(std::size_t const id)
-  // pre(Contains(id))
+  void Remove(std::size_t const id) pre(Contains(id))
   {
     auto const index = sparse_[id];
     auto const lastIndex = dense_.size() - 1;
@@ -68,18 +66,17 @@ struct [[nodiscard]] SparseSet
 
   // Get
   [[nodiscard]]
-  constexpr auto Get(this auto&& self, std::size_t const id) noexcept
-  // pre(self.Contains(id))
+  constexpr auto Get(this auto&& self, std::size_t const id) noexcept pre(self.Contains(id))
   {
     return self.dense_[self.sparse_[id]];
   }
 
   // clang-format off
-  [[nodiscard]] constexpr auto  Size    (                                         ) const noexcept -> std::size_t { return dense_.size(); }
-  [[nodiscard]] constexpr auto Capacity (                                         ) const noexcept -> std::size_t { return sparse_.size(); }
-  [[nodiscard]] constexpr auto Empty    (                                         ) const noexcept -> bool        { return dense_.empty(); }
-  [[nodiscard]] constexpr auto begin    (this auto &&self [[clang::lifetimebound]])       noexcept                { return self.dense_.begin(); }
-  [[nodiscard]] constexpr auto end      (this auto &&self [[clang::lifetimebound]])       noexcept                { return self.dense_.end(); }
+  [[nodiscard]] constexpr auto  Size    (                ) const noexcept -> std::size_t { return dense_.size(); }
+  [[nodiscard]] constexpr auto Capacity (                ) const noexcept -> std::size_t { return sparse_.size(); }
+  [[nodiscard]] constexpr auto Empty    (                ) const noexcept -> bool        { return dense_.empty(); }
+  [[nodiscard]] constexpr auto begin    (this auto &&self)       noexcept                { return self.dense_.begin(); }
+  [[nodiscard]] constexpr auto end      (this auto &&self)       noexcept                { return self.dense_.end(); }
   // clang-format on
 
   // Clear

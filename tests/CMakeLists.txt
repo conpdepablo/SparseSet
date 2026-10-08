@@ -2,7 +2,7 @@
 enable_testing()
 
 add_executable(SparseSetTests
-   SparseSetTests.cxx
+   SparseSetTests.cpp
 )
 
 target_compile_features(SparseSetTests PUBLIC cxx_std_26)

@@ -13,24 +13,6 @@
    ],
    "configurePresets": [
       {
-         "name": "clang-debug",
-         "displayName": "Clang Debug",
-         "description": "",
-         "inherits": [
-            "debug-cfg",
-            "clang-cfg"
-         ]
-      },
-      {
-         "name": "clang-release",
-         "displayName": "Clang Release",
-         "description": "",
-         "inherits": [
-            "release-cfg",
-            "clang-cfg"
-         ]
-      },
-      {
          "name": "g++-debug",
          "displayName": "G++ Debug",
          "description": "",
