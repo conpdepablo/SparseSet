@@ -1,0 +1,52 @@
+{
+   "version": 5,
+   "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 25,
+      "patch": 0
+   },
+   "include": [
+      "cmake/DebugPresets.json",
+      "cmake/ReleasePresets.json",
+      "cmake/ClangPresets.json",
+      "cmake/GccPresets.json"
+   ],
+   "configurePresets": [
+      {
+         "name": "clang-debug",
+         "displayName": "Clang Debug",
+         "description": "",
+         "inherits": [
+            "debug-cfg",
+            "clang-cfg"
+         ]
+      },
+      {
+         "name": "clang-release",
+         "displayName": "Clang Release",
+         "description": "",
+         "inherits": [
+            "release-cfg",
+            "clang-cfg"
+         ]
+      },
+      {
+         "name": "g++-debug",
+         "displayName": "G++ Debug",
+         "description": "",
+         "inherits": [
+            "debug-cfg",
+            "g++-cfg"
+         ]
+      },
+      {
+         "name": "g++-release",
+         "displayName": "G++ Release",
+         "description": "",
+         "inherits": [
+            "release-cfg",
+            "g++-cfg"
+         ]
+      }
+   ]
+}
